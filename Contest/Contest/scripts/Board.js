@@ -198,7 +198,7 @@ function saveResult() {
 
     $.ajax({
         type: "POST",
-        url: "index1.aspx/AddResult",
+        url: "Index.aspx/AddResult",
         data: dataObj,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -212,15 +212,9 @@ function saveResult() {
 function getInfo() {
    
 
-    $.ajax({
-        type: "POST",
-        url: "index1.aspx/GetInfo",
-        data: '{}',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (msg) {
+            var data = $("#dvInfo").text();
             var questionList = new Array();
-            var list = JSON.parse(msg.d);
+            var list = JSON.parse(data);
             for (var i = 0; i < list.length; i++)
             {
                 var question = list[i];
@@ -234,7 +228,6 @@ function getInfo() {
 
             }
             board = new Board(questionList);
-        }
-    });
+      
 }
 
