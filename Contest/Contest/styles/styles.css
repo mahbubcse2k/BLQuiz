@@ -121,7 +121,7 @@
               text-align:center;
               font-weight:bold;
            margin:auto;
-            display:none;
+          /*  display:none; */
         }
 
         #dvRules {

@@ -133,7 +133,7 @@
   
     <script src="scripts/jquery.plugin.min.js"></script>
     <script src="scripts/jquery.timer.min.js"></script>
-    <script src="scripts/Board.min.js"></script>
+    <script src="scripts/Board.js"></script>
     <script>
        
 
