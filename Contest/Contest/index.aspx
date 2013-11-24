@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Contest.Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" EnableViewState="false" Inherits="Contest.Index" %>
 
 <!DOCTYPE html>
 
@@ -6,16 +6,42 @@
 <head runat="server">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    
     <link type="text/css" rel="stylesheet" href="styles/styles.css" />
-     
-</head>
-<body>
-    <form id="form1" runat="server"></form>
-    <div id="dvLiked" runat="server">
+      <script src="scripts/FBIntegration.js"></script>
+    <style>
+        label.error
+        {
+           display:block;
+           color:red;
+           font-style:italic;
+           font-size:10px;
+        }
+        #signupForm input{
+            width:99%;
+           
+        }
 
+        #signupForm td
+        {
+            vertical-align:top;
+        }
+
+        .watermark {
+   color: #999;
+}
+
+    </style>
+</head>
+
+
+<body>
+  
+    <div id="dvLiked" runat="server">
+       
     <div id="fb-root"></div>
-     <script src="scripts/FBIntegration.js"></script>
+    
     <script>
         init();
     </script>
@@ -43,33 +69,39 @@
             <td></td>
             <td style="height:400px;background-color:#BFCCD4">
                 <div id="dvLogIn">
-                    <div id="dvProfilePic" style="height:50px;"></div>
-                    <div style="margin-bottom: 20px">Welcome <span id="dvUserName">user</span>.<br /> Please provide following information.</div>
-                    <table>
+                    <div id="dvProfilePic" ></div>
+                    <div style="margin-bottom: 10px;text-align:center">Welcome <span id="dvUserName">user</span>.<br /> Please provide following information.</div>
+                   
+                     <form id="signupForm" runat="server">
+                     <table style="width:100%">
+                         <colgroup>
+                            <%-- <col width="0px;"/>--%>
+                             <col />
+                         </colgroup>
                         <tr>
-                            <td>Customer ID</td>
+                           <%-- <td>Customer ID</td>--%>
                             <td>
-                                <input type="text" id="txtCustomerId" />
+                                <input type="text" name="txtCustomerId" id="txtCustomerId" />
                             </td>
                         </tr>
                         <tr>
-                            <td>Phone</td>
+                            <%--<td>Phone</td>--%>
                             <td>
-                                <input type="text" id="txtPhone" />
+                                <input type="number" name="txtPhone" id="txtPhone" />
                             </td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                           <%-- <td>Email</td>--%>
                             <td>
-                                <input type="text" id="txtEmail" />
+                                <input type="email" name="txtEmail"  id="txtEmail" />
                             </td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
-                            <td style="padding-left:4px;"> <span class="button" onclick="showRules();">Enter Quiz</span></td>
+                            
+                            <td style="text-align:center"> <span class="button" onclick="$('#signupForm').submit();">Enter Quiz</span></td>
                         </tr>
                     </table>
-
+</form>
 
 
                 </div>
@@ -119,8 +151,8 @@
                   </div>
         </div>
         <div id="dvSubmit">
-             <div id="dvScoreMsg" style="text-align: center"><span class="button" id="btnInvite">Invite Friends</span></div>
-            <div style="text-align: center"><span class="button" onclick="sendRequest()" id="btnInvite">Invite Friends</span></div>
+             <div id="dvScoreMsg" style="text-align: center"></div>
+            <div style="text-align: center"><span class="button" onclick="sendRequest()" id="btnInvite">Invite your friends</span></div>
             
         </div>
 
@@ -136,13 +168,63 @@
     <script src="scripts/jquery.plugin.min.js"></script>
     <script src="scripts/jquery.timer.min.js"></script>
     <script src="scripts/Board.js"></script>
-   
-
-    <div id="dvInfo" style="display:none" runat="server"></div>
+    <script src="scripts/jquery.watermark.min.js"></script>
+     <input id="hdInfo" type="hidden" runat="server" />
+  
 </div>
     <div id="dvNotLiked" runat="server">
   <h1>  Like our page to continue..........   </h1>
     </div>
+    <script>
 
+        $("#signupForm").validate({
+            submitHandler : function(form) {
+                showRules();
+            },
+
+            rules: {
+               
+                txtCustomerId: {
+                    required: true,
+                    minlength: 4
+                },
+                txtPhone: {
+                    required: true,
+                    minlength: 5
+                },
+               
+                txtEmail: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+               
+                txtCustomerId: {
+                    required: "Please enter your CustomerId",
+                    minlength: "Please enter a valid CustomerId"
+                },
+                txtPhone: {
+                    required: "Please provide your number",
+                    minlength: "Please provide a valid number",
+                    number: "Please provide a valid number"
+                },
+               
+                txtEmail:
+                    {
+                        required: "Please enter your email address",
+                        email: "Please enter your email address"
+                    }
+               
+            }
+        });
+
+
+        $('#txtCustomerId').watermark('Customer ID');
+        $('#txtPhone').watermark('Phone');
+        $('#txtEmail').watermark('Email');
+
+
+    </script>
 </body>
 </html>

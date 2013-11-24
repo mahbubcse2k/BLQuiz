@@ -61,11 +61,13 @@ function checkPermission() {
 
 
 function showLogIn() {
-    FB.api('me?fields=id,name,picture', function (response) {
+    FB.api('me?fields=id,name', function (response) {
         $("#dvUserName").text(response.name);
-        $("#dvProfilePic").css('background-image', 'url({0})'.format(response.picture.data.url));
         userId = response.id;
+        $("#dvProfilePic").css('background-image', 'url(http://graph.facebook.com/{0}/picture?type=large)'.format(userId));
+       
         $("#dvLogIn").show();
+        getInfo();
     });
     FB.Canvas.setSize({ height: 500 });
 }
@@ -73,12 +75,12 @@ function showLogIn() {
 function share() {
 
     var params = {};
-    params['message'] = 'I have scored. You can try..';
+    params['message'] =  $("#dvUserName").text()+' played to win special gifts!';
     params['name'] = 'Play to Win!!!!';
-    params['description'] = 'Description';
-    params['link'] = 'https://www.facebook.com/shanta123sdsfdsfsfs/app_1412746732291492';
+    params['description'] = 'Anxter.com is providing free gifts to lucky users. ';
+    params['link'] = 'https://www.facebook.com/Brand00717/app_1412746732291492';
     params['caption'] = 'WIN WIN';
-  //  FB.api('/me/feed', 'post', params);
+    FB.api('/me/feed', 'post', params);
 }
 
 

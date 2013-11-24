@@ -14,7 +14,7 @@
     <RootNamespace>Contest</RootNamespace>
     <AssemblyName>Contest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -61,6 +61,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\sorolayon - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\sorolayon - Web Deploy.pubxml" />
+    <Content Include="scripts\Board.min.js">
+      <DependentUpon>Board.js</DependentUpon>
+    </Content>
+    <Content Include="scripts\Board.min.js.map">
+      <DependentUpon>Board.js</DependentUpon>
+    </Content>
+    <Content Include="scripts\jquery.watermark.min.js">
+      <DependentUpon>jquery.watermark.js</DependentUpon>
+    </Content>
+    <Content Include="scripts\jquery.watermark.min.js.map">
+      <DependentUpon>jquery.watermark.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -78,8 +92,10 @@
     <Content Include="redirect.html" />
     <Content Include="scripts\Board.js" />
     <Content Include="scripts\FBIntegration.js" />
+    <Content Include="scripts\jquery-1.8.3.js" />
     <Content Include="scripts\jquery.plugin.min.js" />
     <Content Include="scripts\jquery.timer.min.js" />
+    <Content Include="scripts\jquery.watermark.js" />
     <Content Include="styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -112,7 +128,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1431</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1431/</IISUrl>
+          <IISUrl>http://localhost/Contest</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -18,7 +18,9 @@ namespace Contest
         [WebMethod]
         public static void AddResult(string result)
         {
-            DataMapper.AddResult(JsonConvert.DeserializeObject<ResultInfo>(result));
+            byte[] data = Convert.FromBase64String(result);
+            string decodedString = Encoding.UTF8.GetString(data);
+            DataMapper.AddResult(JsonConvert.DeserializeObject<ResultInfo>(decodedString));
         }
 
        
@@ -38,35 +40,51 @@ namespace Contest
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
-                JObject signedRequestJsonObject = GetSignedRequestJsonObject();
-                if (signedRequestJsonObject["page"] != null)
-                {
-                    if ((bool)signedRequestJsonObject.SelectToken("page.liked"))
-                    {
-                        dvLiked.Visible = true;
-                        dvNotLiked.Visible = false;
-                        dvInfo.InnerText = JsonConvert.SerializeObject(DataMapper.GetQuestions());
-                    }
-                    else
-                    {
-                        dvLiked.Visible = false;
-                        dvNotLiked.Visible = true;
-                    }
+           try
+           {
+              JObject signedRequestJsonObject = GetSignedRequestJsonObject();
+              if (signedRequestJsonObject["page"] != null)
+              {
+                  if ((bool)signedRequestJsonObject.SelectToken("page.liked"))
+                  {
+                    dvLiked.Visible = true;
+                    dvNotLiked.Visible = false;
+                    hdInfo.Value = EncodeTo64(JsonConvert.SerializeObject(DataMapper.GetQuestions()));
+                   }
+                   else
+                   {
+                       dvLiked.Visible = false;
+                       dvNotLiked.Visible = true;
+                   }
 
-                }
-                else
-                {
-                    base.Response.Redirect("redirect.html");
-                }
-            }
-            catch
-            {
-            }
+               }
+               else
+               {
+                   base.Response.Redirect("redirect.html");
+               }
+           }
+           catch
+           {
+           }
 
 
            
+        }
+
+
+        static public string EncodeTo64(string toEncode)
+        {
+
+            byte[] toEncodeAsBytes
+
+                  = System.Text.ASCIIEncoding.ASCII.GetBytes(toEncode);
+
+            string returnValue
+
+                  = System.Convert.ToBase64String(toEncodeAsBytes);
+
+            return returnValue;
+
         }
 
     }

@@ -25,6 +25,8 @@
                     command.Parameters.Add(new SqlParameter("@Score", info.Score));
                     command.Parameters.Add(new SqlParameter("@Phone", info.Phone));
                     command.Parameters.Add(new SqlParameter("@Email", info.Email));
+                    command.Parameters.Add(new SqlParameter("@UserName", info.UserName));
+                    command.Parameters.Add(new SqlParameter("@Time", info.Time));
                     command.ExecuteNonQuery();
                 }
             }
