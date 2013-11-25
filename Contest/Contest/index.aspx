@@ -152,7 +152,7 @@
         </div>
         <div id="dvSubmit">
              <div id="dvScoreMsg" style="text-align: center"></div>
-            <div style="text-align: center"><span class="button" onclick="sendRequest()" id="btnInvite">Invite your friends</span></div>
+            <div style="text-align: center"><span style="display:none" class="button" onclick="sendRequest()" id="btnInvite">Invite your friends</span></div>
             
         </div>
 
@@ -167,7 +167,7 @@
   
     <script src="scripts/jquery.plugin.min.js"></script>
     <script src="scripts/jquery.timer.min.js"></script>
-    <script src="scripts/Board.js"></script>
+    <script src="scripts/Board.min.js"></script>
     <script src="scripts/jquery.watermark.min.js"></script>
      <input id="hdInfo" type="hidden" runat="server" />
   

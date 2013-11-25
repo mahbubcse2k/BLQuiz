@@ -14,8 +14,10 @@ $("#dvContainer").timer({
     repeat: 61,
     callback: function (index) {
          time = 60-index;
-        if (time < 0) {
+         if (time < 0) {
+             time = 0;
             onNext(true);
+           
             return;
         }
         var timeStr = time > 9 ? time.toString() : "0" + time;
@@ -164,7 +166,11 @@ function saveResult() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-           
+            $('#btnInvite').show();
+        },
+        error: function (msg)
+        {
+            alert(msg);
         }
     });
 }

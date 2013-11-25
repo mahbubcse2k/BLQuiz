@@ -75,11 +75,10 @@ function showLogIn() {
 function share() {
 
     var params = {};
-    params['message'] =  $("#dvUserName").text()+' played to win special gifts!';
-    params['name'] = 'Play to Win!!!!';
+    params['name'] = $("#dvUserName").text() + ' played to win special gifts!';
     params['description'] = 'Anxter.com is providing free gifts to lucky users. ';
     params['link'] = 'https://www.facebook.com/Brand00717/app_1412746732291492';
-    params['caption'] = 'WIN WIN';
+    params['messsage'] = ' ';
     FB.api('/me/feed', 'post', params);
 }
 

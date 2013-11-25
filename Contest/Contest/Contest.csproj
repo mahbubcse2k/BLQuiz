@@ -63,6 +63,10 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\sorolayon - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\sorolayon - Web Deploy.pubxml" />
+    <Content Include="DB\dbo.AddResult.sql" />
+    <Content Include="DB\dbo.GetQuestions.sql" />
+    <Content Include="DB\dbo.Questions.sql" />
+    <Content Include="DB\dbo.ResultInfo.sql" />
     <Content Include="scripts\Board.min.js">
       <DependentUpon>Board.js</DependentUpon>
     </Content>
