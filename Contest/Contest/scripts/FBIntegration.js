@@ -35,7 +35,7 @@ function fbLoginStatus(response)
 
 var userId = 0;
 var userToken = '';
-
+var userName = '';
 function requestForLogIn() {
     FB.login(function (response) {
         if (response.authResponse) {
@@ -63,22 +63,23 @@ function checkPermission() {
 function showLogIn() {
     FB.api('me?fields=id,name', function (response) {
         $("#dvUserName").text(response.name);
+        userName = response.name;
         userId = response.id;
         $("#dvProfilePic").css('background-image', 'url(http://graph.facebook.com/{0}/picture?type=large)'.format(userId));
        
         $("#dvLogIn").show();
         getInfo();
     });
-    FB.Canvas.setSize({ height: 500 });
+    FB.Canvas.setSize({ height: 418 });
 }
 
 function share() {
 
     var params = {};
-    params['name'] = $("#dvUserName").text() + ' played to win special gifts!';
-    params['description'] = 'Anxter.com is providing free gifts to lucky users. ';
+    params['name'] = '{0} played Banglalion Quiz Master to win special gifts!'.format(userName);
+    params['description'] = 'Banglalion Wimax is providing free gifts to lucky winners. ';
     params['link'] = 'https://www.facebook.com/Brand00717/app_1412746732291492';
-    params['messsage'] = ' ';
+   
     FB.api('/me/feed', 'post', params);
 }
 

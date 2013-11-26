@@ -7,8 +7,9 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-    
-    <link type="text/css" rel="stylesheet" href="styles/styles.css" />
+     <script src="https:http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.min.js"></script>
+   
+    <link type="text/css" rel="stylesheet" href="styles/styles.min.css" />
       <script src="scripts/FBIntegration.js"></script>
     <style>
         label.error
@@ -18,10 +19,7 @@
            font-style:italic;
            font-size:10px;
         }
-        #signupForm input{
-            width:99%;
-           
-        }
+     
 
         #signupForm td
         {
@@ -46,61 +44,38 @@
         init();
     </script>
 
-    <table style="width:100%;border-top:4px solid #ffd503" cellspacing="0" cellpadding="0" >
+    <table style="width:100%;" cellspacing="0" cellpadding="0" >
         <colgroup>
             <col width="0px" />
             <col />
             <col width="0px" />
         </colgroup>
-        <tr>
+       <%-- <tr>
             <td></td>
             <td>
-                <div id="dvHeader" style="background-color: white; overflow: hidden; ">
-                    <div id="dvLeftLogo">LOGO1</div>
-                    <div id="dvRightLogo">LOGO2</div>
+                <div id="dvHeader" style="background-color: white; overflow: hidden;position:relative;top:2px; ">
+                    <div id="dvLeftLogo"></div>
+                    <div id="dvRightLogo"></div>
 
                 </div>
             </td>
             <td></td>
 
 
-        </tr>
+        </tr>--%>
         <tr>
             <td></td>
-            <td style="height:400px;background-color:#BFCCD4">
+            <td style="height:400px;">
                 <div id="dvLogIn">
                     <div id="dvProfilePic" ></div>
-                    <div style="margin-bottom: 10px;text-align:center">Welcome <span id="dvUserName">user</span>.<br /> Please provide following information.</div>
+                  <%--<div style="margin-bottom: 10px;text-align:center">Welcome <span id="dvUserName">user</span>.<br /> Please provide following information.</div>--%>
                    
                      <form id="signupForm" runat="server">
-                     <table style="width:100%">
-                         <colgroup>
-                            <%-- <col width="0px;"/>--%>
-                             <col />
-                         </colgroup>
-                        <tr>
-                           <%-- <td>Customer ID</td>--%>
-                            <td>
-                                <input type="text" name="txtCustomerId" id="txtCustomerId" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <%--<td>Phone</td>--%>
-                            <td>
-                                <input type="number" name="txtPhone" id="txtPhone" />
-                            </td>
-                        </tr>
-                        <tr>
-                           <%-- <td>Email</td>--%>
-                            <td>
-                                <input type="email" name="txtEmail"  id="txtEmail" />
-                            </td>
-                        </tr>
-                        <tr>
-                            
-                            <td style="text-align:center"> <span class="button" onclick="$('#signupForm').submit();">Enter Quiz</span></td>
-                        </tr>
-                    </table>
+                          <input type="text" class="loginInput" name="txtCustomerId" id="txtCustomerId" />
+                          <input type="number" class="loginInput" name="txtPhone" id="txtPhone" />
+                          <input type="email" class="loginInput" name="txtEmail"  id="txtEmail" />
+               <span class="button" id="spanQuiz" onclick="showRules();"></span>
+                       
 </form>
 
 
@@ -108,51 +83,43 @@
 
 
                  <div id="dvRules">
-            <div style="white-space: pre;height:200px;">
-          Rule 1: You have to answer seven questions. 
-          Rule 2: You will get maximum 60 seconds to answer all questions. 
-          Rule 3: Each question will carry 10 marks. 
-          Rule 4:
-
-
-            </div>
-            <div style="text-align: center"><span class="button" onclick="startGame();">Start</span></div>
+            
+            <div style="text-align: center"><span id="spanStart" onclick="startGame();"></span></div>
 
         </div>
 
                  <div id="dvContainer">
-            <div id="resultPanel">
-                <div id="dvResult">Your Score: 0</div>
-                <div id="dvTimer">Remaining Time: 01:00</div>
+           
+                <div id="dvResult">0</div>
+                <div id="dvTimer">01:00</div>
 
-            </div>
+         
 
-            <div id="txtQuestion">Question 1</div>
-            <div>
-                <div id="dvOptions">
-                    <div>
+                 <div id="txtQuestion">Question 1</div>
+           
+                    <div id="dvOpt1" class="dvOption">
                         <input name="ans" index="0" type="radio" />
                         <span id="ans1">Answer 1</span>
                     </div>
-                    <div>
+                     <div id="dvOpt2" class="dvOption">
                         <input name="ans" index="1" type="radio" />
                         <span id="ans2">Answer 1</span>
                     </div>
-                    <div>
+                    <div id="dvOpt3" class="dvOption">
                         <input name="ans" index="2" type="radio" />
                         <span id="ans3">Answer 1</span>
                     </div>
-                    <div>
+                     <div id="dvOpt4" class="dvOption">
                         <input name="ans" index="3" type="radio" />
                         <span id="ans4">Answer 1</span>
                     </div>
+               
+                <span  id="btnNext"></span>
                 </div>
-                <div style="text-align: center"><span class="button" id="btnNext">Next</span></div>
-                  </div>
-        </div>
+                  
         <div id="dvSubmit">
              <div id="dvScoreMsg" style="text-align: center"></div>
-            <div style="text-align: center"><span style="display:none" class="button" onclick="sendRequest()" id="btnInvite">Invite your friends</span></div>
+            <div style="text-align: center; display:none "><span style="display:none" class="button" onclick="sendRequest()" id="btnInvite">Invite your friends</span></div>
             
         </div>
 
@@ -173,10 +140,10 @@
   
 </div>
     <div id="dvNotLiked" runat="server">
-  <h1>  Like our page to continue..........   </h1>
+  
     </div>
     <script>
-
+        /*
         $("#signupForm").validate({
             submitHandler : function(form) {
                 showRules();
@@ -219,10 +186,10 @@
             }
         });
 
-
-        $('#txtCustomerId').watermark('Customer ID');
-        $('#txtPhone').watermark('Phone');
-        $('#txtEmail').watermark('Email');
+        */
+        //$('#txtCustomerId').watermark('Customer ID');
+        //$('#txtPhone').watermark('Phone');
+        //$('#txtEmail').watermark('Email');
 
 
     </script>

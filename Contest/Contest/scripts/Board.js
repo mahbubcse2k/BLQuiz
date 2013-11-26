@@ -21,7 +21,7 @@ $("#dvContainer").timer({
             return;
         }
         var timeStr = time > 9 ? time.toString() : "0" + time;
-        $("#dvTimer").text(" Remaining Time: 00:" + timeStr);
+        $("#dvTimer").text("00:" + timeStr);
                       
     }
 });
@@ -73,7 +73,7 @@ function submit()
     $("#dvSubmit").show();
 
     score = board.CorrectAnswerCount * 10;
-    $("#dvScoreMsg").text("Congratulation!! Your have scored: {0}".format(score));
+    $("#dvScoreMsg").text("{0}".format(score));
     saveResult();
     share();
 }
@@ -106,11 +106,7 @@ function onNext(forceSubmit)
         updateResult();
         poulateQuestion(board.currentQuestionIndex);
                 
-        if (pending==1)
-        {
-            $("#btnNext").text("Submit");
-                    
-        }
+       
     }
   
            
@@ -119,7 +115,7 @@ function onNext(forceSubmit)
 var score = 0;
 
 function updateResult() {
-    $("#dvResult").text("Your Score: {0}".format(board.CorrectAnswerCount*10));
+    $("#dvResult").text("{0}".format(board.CorrectAnswerCount*10));
 
 }
         
@@ -135,7 +131,7 @@ function startGame() {
     $("#dvContainer").show();
     poulateQuestion(0);
     $("#dvContainer").timer('start');
-    $("#dvOptions").find("div").click(function fn() {
+    $(".dvOption ").click(function fn() {
         $(".selected").removeClass("selected");
         $(this).addClass("selected").find("input").prop("checked", true);
     });
@@ -166,11 +162,11 @@ function saveResult() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-            $('#btnInvite').show();
+          //  $('#btnInvite').show();
         },
         error: function (msg)
         {
-            alert(msg);
+           // alert(msg);
         }
     });
 }

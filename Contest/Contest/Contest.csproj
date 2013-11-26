@@ -67,6 +67,13 @@
     <Content Include="DB\dbo.GetQuestions.sql" />
     <Content Include="DB\dbo.Questions.sql" />
     <Content Include="DB\dbo.ResultInfo.sql" />
+    <Content Include="images\like400.jpg" />
+    <Content Include="images\likePage1.jpg" />
+    <Content Include="images\Question.jpg" />
+    <Content Include="images\RulesPage_new.jpg" />
+    <Content Include="images\selected.jpg" />
+    <Content Include="images\Untitled_new.jpg" />
+    <Content Include="images\Untitled_new123.jpg" />
     <Content Include="scripts\Board.min.js">
       <DependentUpon>Board.js</DependentUpon>
     </Content>
@@ -101,6 +108,9 @@
     <Content Include="scripts\jquery.timer.min.js" />
     <Content Include="scripts\jquery.watermark.js" />
     <Content Include="styles\styles.css" />
+    <Content Include="styles\styles.min.css">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
