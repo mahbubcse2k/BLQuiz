@@ -1,8 +1,9 @@
-﻿body {
-    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-    font-family: verdana;
+﻿
+
+body {
+        font-family: verdana;
     font-size: 13px;
-    background-image: url(/images/bg.gif) margin:0px;
+   
 }
 
 
@@ -199,16 +200,16 @@ font-size: 18px;
 }
 
 #dvProfilePic {
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 96px;
-    width: 96px;
-    margin: auto;
-    border-radius: 50%;
-    margin-bottom: 5px;
-    top: 158px;
-    left: 100px;
-    position: absolute;
+   background-position: center;
+background-repeat: no-repeat;
+height: 110px;
+width: 110px;
+margin: auto;
+border-radius: 50%;
+margin-bottom: 5px;
+top: 152px;
+left: 100px;
+position: absolute;
 }
 
 input[type=number]::-webkit-inner-spin-button,

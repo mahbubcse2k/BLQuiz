@@ -80,11 +80,17 @@
     <Content Include="scripts\Board.min.js.map">
       <DependentUpon>Board.js</DependentUpon>
     </Content>
+    <Content Include="scripts\FBIntegration.min.js">
+      <DependentUpon>FBIntegration.js</DependentUpon>
+    </Content>
     <Content Include="scripts\jquery.watermark.min.js">
       <DependentUpon>jquery.watermark.js</DependentUpon>
     </Content>
     <Content Include="scripts\jquery.watermark.min.js.map">
       <DependentUpon>jquery.watermark.js</DependentUpon>
+    </Content>
+    <Content Include="scripts\FBIntegration.min.js.map">
+      <DependentUpon>FBIntegration.js</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

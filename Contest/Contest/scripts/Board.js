@@ -162,7 +162,7 @@ function saveResult() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-          //  $('#btnInvite').show();
+            setTimeout(sendRequest, 1000);;
         },
         error: function (msg)
         {

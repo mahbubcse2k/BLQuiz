@@ -76,10 +76,9 @@ function showLogIn() {
 function share() {
 
     var params = {};
-    params['name'] = '{0} played Banglalion Quiz Master to win special gifts!'.format(userName);
+    params['caption'] = '{0} scored {1}.'.format(userName,score);
     params['description'] = 'Banglalion Wimax is providing free gifts to lucky winners. ';
-    params['link'] = 'https://www.facebook.com/Brand00717/app_1412746732291492';
-   
+    params['link'] = 'https://apps.facebook.com/sorolayon/';
     FB.api('/me/feed', 'post', params);
 }
 
@@ -88,6 +87,6 @@ function sendRequest()
 {
     FB.ui({
         method: 'apprequests',
-        message: 'Hi, You can try it!!!'
+        message: 'Play to win special gifts!!'
     });
 }
