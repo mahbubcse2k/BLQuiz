@@ -143,7 +143,7 @@ function startGame() {
 function saveResult() {
     var result = new Object();
     result.UserId = userId;
-    result.UserName = $("#dvUserName").text();
+    result.UserName = userName;
     result.CustomerId = $('#txtCustomerId').val();
     result.Phone = $('#txtPhone').val();
     result.Email = $('#txtEmail').val();
