@@ -5,11 +5,11 @@
             status: true,                                 // Check Facebook Login status
             xfbml: true,                                 // Look for social plugins on the page
             oauth  : true,
-            channelUrl: '//shanta.fwd.wf/channel.html'
+            channelUrl: '//sorolayon.azurewebsites.net/channel.html'
         });
        
         FB.getLoginStatus(fbLoginStatus);
-        //FB.Event.subscribe('auth.authResponseChange', fbLoginStatus);
+       
     };
 
     (function (d, s, id) {
