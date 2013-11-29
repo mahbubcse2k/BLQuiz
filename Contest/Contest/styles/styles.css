@@ -3,7 +3,9 @@
 body {
         font-family: verdana;
     font-size: 13px;
-   
+   background-image:url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/loader_icon.gif);
+   background-repeat:no-repeat;
+   background-position:400px 200px;
 }
 
 
@@ -25,21 +27,6 @@ body {
     color: white;
 }
 
-#dvLeftLogo {
-    float: left;
-    width: 193px;
-    height: 76px;
-    background-image: url(/images/logo.gif);
-}
-
-#dvRightLogo {
-    float: Right;
-    width: 63px;
-    height: 76px;
-    background-image: url(/images/4G-Logo.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-}
 
 #dvContainer {
     text-align: left;
@@ -48,7 +35,7 @@ body {
     margin: auto;
     display: none;
     height: 400px;
-    background-image: url(../images/Question.jpg);
+    background-image: url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/Question.jpg);
     background-size: cover;
 }
 
@@ -69,78 +56,82 @@ color:white;
     .dvOption {
         position: absolute;
         height: 26px;
-        padding-top:6px;
+        padding-top:8px;
         font-size:16px;
 width: 155px;
 cursor:pointer;
 text-align: center;
 border-radius: 10px;
 overflow:hidden;
+background-color: transparent;
     }
 
     #dvOpt1
     {
      left: 242px;
-top: 193px;
+top: 220px;
     }
 
      #dvOpt2
     {
-     left: 421px;
-top: 192px;
+     left: 419px;
+top: 220px;
     }
 
      #dvOpt3
     {
      left: 242px;
-top: 236px;
+top: 262px;
     }
 
    #dvOpt4
     {
-     left: 421px;
-top: 236px;
+    left: 420px;
+top: 262px;
     }
 
 
 
 .selected {
-background-image: url(../images/selected.jpg);
+background-image: url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/selected.jpg);
 background-repeat:repeat-x;
 color:white;
    }
 
 #txtQuestion {
    position: absolute;
-top: 136px;
+top: 164px;
 height: 20px;
 width: 584px;
 left: 118px;
 font-size: 15px;
 background-color: transparent;
 font-weight: bold;
-color: white;
+color: #fff;
 }
 
 #resultPanel {
     overflow: hidden;
+    
 }
 
 #dvResult {
    position: absolute;
-top: 104px;
-left: 222px;
+top: 137px;
+left: 212px;
 width: 30px;
 float: left;
 text-align: center;
-font-size:18px;
+font-size: 18px;
+background-color: transparent;
 }
 
 #dvTimer {
    position: absolute;
-left: 644px;
-top: 104px;
+left: 653px;
+top: 137px;
 font-size: 18px;
+background-color: transparent;
 }
 
 #dvSubmit {
@@ -150,7 +141,7 @@ font-size: 18px;
     margin: auto;
     display: none;
     height: 400px;
-    background-image: url(../images/Untitled_new.jpg);
+    background-image: url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/submit.jpg);
     background-size: cover;
 }
 
@@ -161,7 +152,7 @@ font-size: 18px;
     margin: auto;
     display: none;
     height: 400px;
-    background-image: url(../images/Untitled_new123.jpg);
+    background-image: url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/login.jpg);
     background-size: cover;
 }
 
@@ -180,7 +171,7 @@ font-size: 18px;
     margin: auto;
     display: none;
     height: 400px;
-    background-image: url(../images/RulesPage_new.jpg);
+    background-image: url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/rules.jpg);
     background-size: cover;
 }
 
@@ -207,8 +198,8 @@ width: 110px;
 margin: auto;
 border-radius: 50%;
 margin-bottom: 5px;
-top: 152px;
-left: 100px;
+top: 188px;
+left: 90px;
 position: absolute;
 }
 
@@ -219,75 +210,96 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #dvNotLiked {
-    background-image: url(../images/likePage1.jpg);
+    background-image: url(https://dl.dropboxusercontent.com/u/95934376/QuizMaster/images/like.jpg);
     height: 783px;
     width: 100%;
     background-size: cover;
 }
 
 #dvScoreMsg {
-    width: 90px;
-    position: absolute;
-    height: 40px;
-    top: 236px;
-    left: 361px;
-    color: yellow;
-    font-size: 35px;
+   width: 90px;
+position: absolute;
+height: 40px;
+top: 241px;
+left: 363px;
+color: #ffd503;
+font-size: 35px;
+background-color: transparent;
 }
 
 #spanQuiz {
-    position: absolute;
-    top: 268px;
-    left: 335px;
-    width: 115px;
-    height: 26px;
-    background-color: transparent;
-    cursor: pointer;
+   position: absolute;
+top: 295px;
+left: 336px;
+width: 116px;
+height: 26px;
+background-color: transparent;
+cursor: pointer;
     
 }
 
 .loginInput {
-    position: absolute;
-    left: 381px;
-    width: 163px;
-    background-color: transparent;
-    border: none;
-    height: 24px;
-    font-weight: bold;
-    outline: none;
-    color:white;
+  position: absolute;
+left: 354px;
+width: 222px;
+background-color: transparent;
+border: none;
+height: 24px;
+font-weight: bold;
+outline: none;
+color: #fff;
    
 }
 
 #txtCustomerId {
-    top: 160px;
+    top: 181px;
 }
 
 #txtEmail {
-    top: 230px;
+    top: 252px;
 }
 
 #txtPhone {
-    top: 195px;
+    top: 216px;
 }
 
 #spanStart {
-    top: 299px;
-    position: absolute;
-    left: 355px;
-    height: 30px;
-    width: 105px;
-    background-color: transparent;
-    cursor:pointer;
+   top: 315px;
+position: absolute;
+left: 355px;
+height: 30px;
+width: 108px;
+background-color: transparent;
+cursor: pointer;
 }
 
 #btnNext
 {
-  position: absolute;
-top: 300px;
-width: 109px;
+ position: absolute;
+top: 314px;
+width: 110px;
 height: 29px;
-left: 355px;
+left: 353px;
 background-color: transparent;
-cursor:pointer;
+cursor: pointer;
+}
+
+
+#dvWelcome1{
+top: 122px;
+}
+
+
+#dvWelcome2{
+top: 145px;
+}
+
+.welcome
+{
+position: absolute;
+background-color: transparent;
+left: 210px;
+text-align: center;
+width: 400px;
+color: white;
 }
