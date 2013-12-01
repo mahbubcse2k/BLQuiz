@@ -5,12 +5,13 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.min.js"></script>
+       <script src="scripts/parser.min.js"></script>
     <link type="text/css" rel="stylesheet" href="styles/styles.min.css" />
 </head>
 <body>
     <div id="dvLiked" runat="server">
         <div id="fb-root"></div>
-        <script src="scripts/FBIntegration.min.js"></script>
+        <script src="scripts/FBIntegration.js"></script>
         <script>
             init();
         </script>
@@ -59,6 +60,7 @@
         <script src="scripts/jquery.plugin.min.js"></script>
         <script src="scripts/jquery.timer.min.js"></script>
         <script src="scripts/Board.min.js"></script>
+     
         <input id="hdInfo" type="hidden" runat="server" />
     </div>
     <div id="dvNotLiked" runat="server">

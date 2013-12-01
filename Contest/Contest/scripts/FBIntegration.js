@@ -67,7 +67,7 @@ function showLogIn() {
         userId = response.id;
         $("#dvWelcome1").text('Welcome ' + userName+'.');
 
-        $("#dvProfilePic").css('background-image', 'url(http://graph.facebook.com/{0}/picture?type=large)'.format(userId));
+        $("#dvProfilePic").css('background-image', 'url(https://graph.facebook.com/{0}/picture?type=large)'.format(userId));
        
         $("#dvLogIn").show();
         getInfo();

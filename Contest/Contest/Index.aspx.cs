@@ -74,10 +74,10 @@ namespace Contest
 
         static public string EncodeTo64(string toEncode)
         {
-
+          
             byte[] toEncodeAsBytes
 
-                  = System.Text.ASCIIEncoding.ASCII.GetBytes(toEncode);
+                  = Encoding.UTF8.GetBytes(toEncode);
 
             string returnValue
 
