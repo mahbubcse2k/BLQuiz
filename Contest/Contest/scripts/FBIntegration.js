@@ -5,18 +5,22 @@
             status: true,                                 // Check Facebook Login status
             xfbml: true,                                 // Look for social plugins on the page
             oauth  : true,
-            channelUrl: '//sorolayon.azurewebsites.net/channel.html'
+            channelUrl: 'https://sorolayon.azurewebsites.net/channel.html'
         });
        
         FB.getLoginStatus(fbLoginStatus);
        
     };
 
+
+   
+
+
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1412746732291492";
+        js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
@@ -79,7 +83,7 @@ function share() {
 
     var params = {};
     params['caption'] = '{0} scored {1}.'.format(userName,score);
-    params['description'] = 'Banglalion Wimax is providing free gifts to lucky winners. ';
+    params['description'] = 'Banglalion is providing Tk.200 worth of data (for Prepaid and Limited Postpaid user) & Tk.200 cash discount (for King/King user). ';
     params['link'] = 'https://apps.facebook.com/sorolayon/';
     FB.api('/me/feed', 'post', params);
 }
@@ -90,5 +94,7 @@ function sendRequest()
     FB.ui({
         method: 'apprequests',
         message: 'Play to win special gifts!!'
-    });
+    },
+    showTopList
+        );
 }

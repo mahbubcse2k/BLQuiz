@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -16,11 +17,12 @@ namespace Contest
     {
 
         [WebMethod]
-        public static void AddResult(string result)
+        public static string AddResult(string result)
         {
-            byte[] data = Convert.FromBase64String(result);
-            string decodedString = Encoding.UTF8.GetString(data);
-            DataMapper.AddResult(JsonConvert.DeserializeObject<ResultInfo>(decodedString));
+           byte[] data = Convert.FromBase64String(result);
+           string decodedString = Encoding.UTF8.GetString(data);
+           var list = DataMapper.AddResult(JsonConvert.DeserializeObject<ResultInfo>(decodedString));
+           return EncodeTo64(JsonConvert.SerializeObject(list));
         }
 
        
@@ -40,6 +42,11 @@ namespace Contest
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+           
+
+
            try
            {
               JObject signedRequestJsonObject = GetSignedRequestJsonObject();
@@ -47,9 +54,30 @@ namespace Contest
               {
                   if ((bool)signedRequestJsonObject.SelectToken("page.liked"))
                   {
+
+                      string userId = "";
+
+                     try
+                     {
+                         userId = (string)signedRequestJsonObject.SelectToken("user_id");
+
+                     }
+                     catch
+                     {
+
+                     }
+
                     dvLiked.Visible = true;
                     dvNotLiked.Visible = false;
-                    hdInfo.Value = EncodeTo64(JsonConvert.SerializeObject(DataMapper.GetQuestions()));
+                    var list = DataMapper.GetQuestions(userId);
+                      while(list.Count==0)
+                      {
+                          Thread.Sleep(60 * 1000);
+                          list = DataMapper.GetQuestions(userId);
+                      }
+
+
+                    hdInfo.Value = EncodeTo64(JsonConvert.SerializeObject(list));
                    }
                    else
                    {

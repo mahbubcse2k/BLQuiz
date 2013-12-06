@@ -65,6 +65,61 @@ function poulateQuestion(index)
    
 }
 
+function showTopList()
+{
+    $('#resultTemplate').tmpl(standing).appendTo("#dvPoint");
+   
+        $("#dvSubmit").hide();
+        $("#dvList").show();
+   
+}
+
+
+
+function validateForm()
+{
+    
+    $('#dvError').text('');
+
+    var z = $('#txtCustomerId').val();
+    z = $.trim(z);
+    if (z == '')
+    {
+        $('#dvError').text('Please provide a your Customer Id.');
+        return false;
+    }
+
+
+
+
+    var y = $('#txtPhone').val();
+    y= $.trim(y);
+    if (y.indexOf('+') == 0)
+    {
+        y = y.split('+')[1];
+    }
+    if (isNaN(y)||y=='') {
+        $('#dvError').text('Please provide a valid phone number.');
+        return false;
+    }
+   
+
+  
+        var x = $('#txtEmail').val();
+        var atpos = x.indexOf("@");
+        var dotpos = x.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+            $('#dvError').text('Please provide a valid email address.');
+           
+            return false;
+        }
+        $('#dvError').text('');
+        showRules();
+   
+}
+
+
+
 
 function submit()
 {
@@ -138,7 +193,7 @@ function startGame() {
     $("#btnNext").click(function () { onNext(false); });
 }
   
-
+var standing = null;
 
 function saveResult() {
     var result = new Object();
@@ -162,7 +217,9 @@ function saveResult() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-            setTimeout(sendRequest, 1000);;
+           
+            setTimeout(sendRequest, 1000);
+            standing = json.parse(msg.d);
         },
         error: function (msg)
         {

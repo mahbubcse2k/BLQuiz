@@ -11,7 +11,7 @@
 <body>
     <div id="dvLiked" runat="server">
         <div id="fb-root"></div>
-        <script src="scripts/FBIntegration.js"></script>
+        <script src="scripts/FBIntegration.min.js"></script>
         <script>
             init();
         </script>
@@ -19,12 +19,13 @@
             <div id="dvProfilePic"></div>
               <form id="signupForm" runat="server">
                 <input type="text" class="loginInput" name="txtCustomerId" id="txtCustomerId" />
-                <input type="number" class="loginInput" name="txtPhone" id="txtPhone" />
+                <input type="text" class="loginInput" name="txtPhone" id="txtPhone" />
                 <input type="email" class="loginInput" name="txtEmail" id="txtEmail" />
-                <span class="button" id="spanQuiz" onclick="showRules();"></span>
+                <span class="button" id="spanQuiz" onclick="validateForm();"></span>
             </form>
-            <div class="welcome" id="dvWelcome1"> ruyuyuy </div>
+            <div class="welcome" id="dvWelcome1">  </div>
             <div class="welcome" id="dvWelcome2">Please provide following information.  </div>
+            <div id="dvError"></div>
         </div>
         <div id="dvRules">
             <div style="text-align: center"><span id="spanStart" onclick="startGame();"></span></div>
@@ -54,13 +55,23 @@
         </div>
         <div id="dvSubmit">
             <div id="dvScoreMsg" style="text-align: center"></div>
-            <div style="text-align: center; display: none"><span style="display: none" class="button" onclick="sendRequest()" id="btnInvite">Invite your friends</span></div>
+           
 
         </div>
+        <div id="dvList">
+            <div id="dvStandHeader">Top 10 scorers</div>
+            <div id="dvPoint"></div>
+
+        </div>
+
+        <script id="resultTemplate" type="text/x-jquery-tmpl">
+        <li>${Name} (<span style="color:#ffd503">${Score}</span>)</li>
+        </script>
+
         <script src="scripts/jquery.plugin.min.js"></script>
         <script src="scripts/jquery.timer.min.js"></script>
         <script src="scripts/Board.min.js"></script>
-     
+        <script src="scripts/jquery.tmpl.min.js"></script>
         <input id="hdInfo" type="hidden" runat="server" />
     </div>
     <div id="dvNotLiked" runat="server">

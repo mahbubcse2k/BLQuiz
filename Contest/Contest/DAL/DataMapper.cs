@@ -10,8 +10,10 @@
     {
         private static string connectionString = WebConfigurationManager.AppSettings["connectionString"].ToString();
 
-        public static void AddResult(ResultInfo info)
+        public static List<Standing> AddResult(ResultInfo info)
         {
+
+            List<Standing> list= new List<Standing>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command2 = new SqlCommand("AddResult", connection) {
@@ -27,12 +29,26 @@
                     command.Parameters.Add(new SqlParameter("@Email", info.Email));
                     command.Parameters.Add(new SqlParameter("@UserName", info.UserName));
                     command.Parameters.Add(new SqlParameter("@Time", info.Time));
-                    command.ExecuteNonQuery();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Standing item = new Standing
+                            {
+                                Name = reader["name"].ToString(),
+                                Score = Convert.ToInt32(reader["score"]),
+                            };
+                          
+                            list.Add(item);
+                        }
+                    }
                 }
             }
+
+            return list;
         }
 
-        public static List<Question> GetQuestions()
+        public static List<Question> GetQuestions(string userId)
         {
             List<Question> list = new List<Question>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -43,6 +59,7 @@
                 using (SqlCommand command = command2)
                 {
                     connection.Open();
+                    command.Parameters.Add(new SqlParameter("@UserId", userId));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -65,4 +82,5 @@
         }
     }
 }
+
 
