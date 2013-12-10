@@ -64,6 +64,8 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\aaa.pubxml" />
     <None Include="Properties\PublishProfiles\Alphanet FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Sorolayaon - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Sorolayaon - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\sorolayon - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\sorolayon - Web Deploy.pubxml" />
     <Content Include="Channel.html" />

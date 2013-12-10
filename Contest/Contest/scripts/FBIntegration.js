@@ -5,7 +5,7 @@
             status: true,                                 // Check Facebook Login status
             xfbml: true,                                 // Look for social plugins on the page
             oauth  : true,
-            channelUrl: 'https://sorolayon.azurewebsites.net/channel.html'
+            channelUrl: 'https://www.sorolayaon.com/Quiz/channel.html'
         });
        
         FB.getLoginStatus(fbLoginStatus);
