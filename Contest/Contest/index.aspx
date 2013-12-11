@@ -73,6 +73,7 @@
         <script src="scripts/Board.min.js"></script>
         <script src="scripts/jquery.tmpl.min.js"></script>
         <input id="hdInfo" type="hidden" runat="server" />
+         <input id="Hidden1" type="hidden" runat="server" />
     </div>
     <div id="dvNotLiked" runat="server">
     </div>

@@ -204,6 +204,7 @@ function saveResult() {
     result.Email = $('#txtEmail').val();
     result.Score = score;
     result.Time = 60 - parseInt(time);
+    result.Token = $("#Hidden1").val();
     
     var str = json.stringify(result);
 

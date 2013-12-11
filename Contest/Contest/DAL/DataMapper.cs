@@ -29,6 +29,7 @@
                     command.Parameters.Add(new SqlParameter("@Email", info.Email));
                     command.Parameters.Add(new SqlParameter("@UserName", info.UserName));
                     command.Parameters.Add(new SqlParameter("@Time", info.Time));
+                    command.Parameters.Add(new SqlParameter("@Token", info.Token));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -48,7 +49,7 @@
             return list;
         }
 
-        public static List<Question> GetQuestions(string userId)
+        public static List<Question> GetQuestions(string token)
         {
             List<Question> list = new List<Question>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -59,7 +60,7 @@
                 using (SqlCommand command = command2)
                 {
                     connection.Open();
-                    command.Parameters.Add(new SqlParameter("@UserId", userId));
+                    command.Parameters.Add(new SqlParameter("@Token", token));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

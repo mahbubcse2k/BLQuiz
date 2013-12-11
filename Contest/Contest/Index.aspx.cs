@@ -54,28 +54,18 @@ namespace Contest
                   if ((bool)signedRequestJsonObject.SelectToken("page.liked"))
                   {
 
-                      string userId = "";
-
-                     try
-                     {
-                         userId = (string)signedRequestJsonObject.SelectToken("user_id");
-
-                     }
-                     catch
-                     {
-
-                     }
+                      var guid = Guid.NewGuid().ToString();
 
                     dvLiked.Visible = true;
                     dvNotLiked.Visible = false;
-                    var list = DataMapper.GetQuestions(userId);
+                    var list = DataMapper.GetQuestions(guid);
                       while(list.Count==0)
                       {
                           Thread.Sleep(60 * 1000);
-                          list = DataMapper.GetQuestions(userId);
+                          list = DataMapper.GetQuestions(guid);
                       }
 
-
+                      Hidden1.Value = guid;  
                     hdInfo.Value = EncodeTo64(JsonConvert.SerializeObject(list));
                    }
                    else
